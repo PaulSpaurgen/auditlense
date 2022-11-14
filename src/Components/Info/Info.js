@@ -19,6 +19,8 @@ import {
   InputLeftElement,
   SimpleGrid,
   Image,
+  UnorderedList,
+  ListItem,
 } from "@chakra-ui/react";
 import { BiRupee } from "react-icons/bi";
 import {
@@ -31,6 +33,8 @@ import logo from "../../Images/mainLogo.png";
 // MdOutlineContactPage RiCheckboxBlankCircleFill
 import startUpAdvisory from "../data";
 import Footer from "../Common/Footer";
+import firstImg from "../../Images/img1.jpg";
+import ThirdImg from "../../Images/img3.jpg";
 function Info() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [cardData, setCardData] = useState([]);
@@ -310,13 +314,7 @@ function Info() {
           </Flex>
         </Flex>
         {/* Virtual Accounting */}
-        <Flex
-          mt="20px"
-          w="60%"
-          alignItems="flex-end"
-          flexDirection="column"
-          
-        >
+        <Flex mt="20px" w="60%" alignItems="flex-end" flexDirection="column">
           <Heading fontSize={{ base: "xl", md: "5xl", lg: "7xl" }}>
             Virtual Accounting
           </Heading>
@@ -343,7 +341,15 @@ function Info() {
               w={{ base: "80%", md: "80%" }}
               borderRadius={{ base: "20px", md: "40px" }}
               bg="lightgray"
-            ></Box>
+            >
+              <Image
+                src={firstImg}
+                height="100%"
+                width="100%"
+                borderRadius={{ base: "20px", md: "40px" }}
+                objectFit="cover"
+              />
+            </Box>
           </Flex>
           <Flex
             w={{ base: "100%", md: "37%" }}
@@ -356,11 +362,9 @@ function Info() {
               w={{ base: "80%", md: "80%" }}
               fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
             >
-              <p>Lorem ipsum</p>
-              <p>dolor sit amet,</p>
-              <p>consectetuer</p>
-              <p>adipiscing elit,</p>
-              <p>sed diam </p>
+              <p>Accounting now</p>
+              <p>Hassel free,</p>
+              <p>with Audit Lens</p>
             </Heading>
           </Flex>
         </Flex>
@@ -371,7 +375,7 @@ function Info() {
             textAlign="start"
             fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
           >
-            Lorem Ipsum
+            How we do it!
           </Heading>
         </Flex>
         <Flex w="100%" justifyContent="center">
@@ -382,13 +386,52 @@ function Info() {
             fontSize={{ base: "lg", md: "3xl", lg: "5xl" }}
           >
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-              tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-              consequat. Duis autem vel eum iriure dolor in hendrerit in
-              vulputate velit
+              Auditlens offers Virtual Accounting Services to manage your
+              accounts payable, accounts receivable, projects, general ledger
+              postings, bank reconciliations, preparation of financial
+              statements, and MIS Reporting* for Small and Medium Enterprise
+              (SME) Sector. We are equipped with accounting software tto
+              minimize the chances of miscalculations. Our ultimate goal is to
+              be a value addition to your business for making you focus on your
+              core business functions, let us provide the accounting, Tax
+              compliance services.
             </p>
+          </Box>
+        </Flex>
+        <Flex w="100%" justifyContent="center">
+          <Heading
+            w="80%"
+            padding={{ base: "0px", md: "40px", lg: "60px" }}
+            textAlign="start"
+            fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
+            mt={{ base: "20px" }}
+          >
+            What we cover !
+          </Heading>
+        </Flex>
+        <Flex w="100%" justifyContent="center">
+          <Box
+            w="80%"
+            paddingLeft={{ base: "0px", md: "40px", lg: "60px" }}
+            textAlign="start"
+            fontSize={{ base: "lg", md: "3xl", lg: "5xl" }}
+          >
+            <UnorderedList>
+              <ListItem>
+                Bookkeeping for your Business like capturing the invoices both
+                Sales, Purchase side and the voucher entries.
+              </ListItem>
+              <ListItem>Periodic GST Filing, if applicable.</ListItem>
+              <ListItem>
+                Monthly TDS Payments, and Quarterly TDS Preparation and Filing.
+              </ListItem>
+              <ListItem>Bank Statement Reconciliation.</ListItem>
+              <ListItem>General guidance, where needed.</ListItem>
+              <ListItem>
+                Periodic P&L, Balance sheets and other MIS reporting, where
+                applicable.
+              </ListItem>
+            </UnorderedList>
           </Box>
         </Flex>
 
@@ -414,6 +457,7 @@ function Info() {
             columns={{ sm: 1, md: 2, lg: 4 }}
             gap={10}
             mt={{ base: "10px", md: "20px", lg: "40px" }}
+            spacingX="20"
           >
             {cardData?.map((value, index) => (
               <Box
@@ -578,7 +622,15 @@ function Info() {
               w={{ base: "80%", md: "80%" }}
               borderRadius={{ base: "20px", md: "40px" }}
               bg="lightgray"
-            ></Box>
+            >
+              <Image
+                src={ThirdImg}
+                height="100%"
+                width="100%"
+                borderRadius={{ base: "20px", md: "40px" }}
+                objectFit="cover"
+              />
+            </Box>
           </Flex>
           <Flex
             w={{ base: "100%", md: "37%" }}
@@ -591,11 +643,9 @@ function Info() {
               w={{ base: "80%", md: "80%" }}
               fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
             >
-              <p>Lorem ipsum</p>
-              <p>dolor sit amet,</p>
-              <p>consectetuer</p>
-              <p>adipiscing elit,</p>
-              <p>sed diam </p>
+              <p>ITR</p>
+              <p>Filing,</p>
+              <p>Made easy!</p>
             </Heading>
           </Flex>
         </Flex>
@@ -606,7 +656,7 @@ function Info() {
             textAlign="start"
             fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
           >
-            Lorem Ipsum
+            Filing ITR now made easy
           </Heading>
         </Flex>
         <Flex w="100%" justifyContent="center">
@@ -616,12 +666,16 @@ function Info() {
             textAlign="start"
             fontSize={{ base: "lg", md: "3xl", lg: "5xl" }}
           >
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-            nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-            consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
-            velit
+            <UnorderedList>
+              <ListItem>
+                All you need to do is submit your <b>form-16</b>.
+              </ListItem>
+              <ListItem>Sit back and relax.</ListItem>
+              <ListItem>
+                Our <b>AI</b> now processes your form.
+              </ListItem>
+              <ListItem>Your ITR is now Filed.</ListItem>
+            </UnorderedList>
           </Box>
         </Flex>
         <Footer />

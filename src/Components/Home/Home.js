@@ -19,6 +19,10 @@ import bgImg from "../../Images/HomeBanner.png";
 import { useState, useEffect } from "react";
 import Footer from "../Common/Footer";
 import ScrollIntoView from "react-scroll-into-view";
+import firstImg from "../../Images/img1.jpg";
+import secondImg from "../../Images/first.jpg";
+import ThirdImg from "../../Images/img3.jpg";
+// ThirdImg
 function Home() {
   const [styles, setStyles] = useState({
     bx1: 70,
@@ -151,9 +155,9 @@ function Home() {
             <a href="/">
               <Box cursor="pointer">Home</Box>
             </a>
-            <ScrollIntoView selector="#services">
+            <a href="/card">
               <Box cursor="pointer">Services</Box>
-            </ScrollIntoView>
+            </a>
             <Box cursor="pointer">About us</Box>
           </Flex>
         </Flex>
@@ -174,15 +178,17 @@ function Home() {
             <p>Just Because you can, </p>
             <p>doesn’t mean you should !!</p>
           </Heading>
-          <Button
-            padding={{ base: "15px", lg: "20px", xl: "30px" }}
-            w={{ base: "70px", md: "240px", lg: "340px", xl: "400px" }}
-            bg="#0E4E9B"
-            color="white"
-            fontSize={{ base: "10px", md: "large" }}
-          >
-            Contact Us
-          </Button>
+          <ScrollIntoView selector="#footer">
+            <Button
+              padding={{ base: "15px", lg: "20px", xl: "30px" }}
+              w={{ base: "70px", md: "240px", lg: "340px", xl: "400px" }}
+              bg="#0E4E9B"
+              color="white"
+              fontSize={{ base: "10px", md: "large" }}
+            >
+              Contact Us
+            </Button>
+          </ScrollIntoView>
         </Flex>
       </Box>
       {/* heading-1 - desktop */}
@@ -443,7 +449,15 @@ function Home() {
             bg="lightgray"
             position="absolute"
             zIndex={2}
-          ></Box>
+          >
+            <Image
+              src={firstImg}
+              height="100%"
+              width="100%"
+              borderRadius="40px"
+              objectFit="cover"
+            />
+          </Box>
         </Box>
         <Box
           w="50%"
@@ -487,7 +501,7 @@ function Home() {
         >
           <Box w="80%" h="80%">
             <Heading paddingTop="20px" fontSize="6xl">
-              <p>Relx we are here to </p>
+              <p>Relax we are here to </p>
               <p>take care of your accounting</p>
             </Heading>
             <Box paddingTop="20px" fontSize="2xl">
@@ -526,7 +540,15 @@ function Home() {
             height="80%"
             bg="lightgray"
             position="absolute"
-          ></Box>
+          >
+            <Image
+              src={secondImg}
+              height="100%"
+              width="100%"
+              borderRadius="40px"
+              objectFit="cover"
+            />
+          </Box>
         </Box>
       </Box>
       <Box
@@ -562,7 +584,15 @@ function Home() {
             bg="lightgray"
             position="absolute"
             zIndex={2}
-          ></Box>
+          >
+            <Image
+              src={ThirdImg}
+              height="100%"
+              width="100%"
+              borderRadius="40px"
+              objectFit="cover"
+            />
+          </Box>
         </Box>
         <Box
           w="50%"
@@ -575,16 +605,20 @@ function Home() {
           paddingLeft="50px"
         >
           <Heading paddingTop="20px" fontSize="6xl">
-            <p>There is never a wrong time </p>
-            <p>to start something good !</p>
+            <p>Paperwork never been </p>
+            <p>this easy before!</p>
           </Heading>
           <Box paddingTop="20px" fontSize="2xl">
-            <b>Talk to startup professional right away</b>
+            <b>Talk to ITR professional right away</b>
           </Box>
           <Box color="GrayText" paddingTop="20px">
-            <p>Advisory in choosing the right entity</p>
-            <p>End to end incorporation advisory</p>
-            <p>Post incorporation benifits</p>
+            <p>
+              Submit your <b>Form-16</b>
+            </p>
+            <p>Sit back & Relax</p>
+            <p>
+              Your ITR is <b>Filed</b>
+            </p>
           </Box>
         </Box>
       </Box>
@@ -613,12 +647,47 @@ function Home() {
         flexDirection="column"
         gap="20px"
       >
+        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
+          <Image
+            src={firstImg}
+            w="100%"
+            h="100%"
+            borderRadius="40px"
+            objectFit="cover"
+          />
+        </Box>
         <Box
           width="80%"
-          height="400px"
-          borderRadius="40px"
-          bg="lightgray"
-        ></Box>
+          display="flex"
+          justifyContent="flex-start"
+          flexDirection="column"
+        >
+          <Heading paddingTop="10px" fontSize="3xl">
+            <p>Paperwork never been </p>
+            <p>this easy before!</p>
+          </Heading>
+          <Box paddingTop="10px" fontSize="xl">
+            <b>Talk to ITR professional right away</b>
+          </Box>
+          <Box color="GrayText" paddingTop="10px">
+            <p>
+              Submit your <b>Form-16</b>
+            </p>
+            <p>Sit back & Relax</p>
+            <p>
+              Your ITR is <b>Filed</b>
+            </p>
+          </Box>
+        </Box>
+        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
+          <Image
+            src={secondImg}
+            w="100%"
+            h="100%"
+            borderRadius="40px"
+            objectFit="cover"
+          />
+        </Box>
         <Box
           width="80%"
           display="flex"
@@ -638,37 +707,15 @@ function Home() {
             <p>Post incorporation benifits</p>
           </Box>
         </Box>
-        <Box
-          width="80%"
-          height="400px"
-          borderRadius="40px"
-          bg="lightgray"
-        ></Box>
-        <Box
-          width="80%"
-          display="flex"
-          justifyContent="flex-start"
-          flexDirection="column"
-        >
-          <Heading paddingTop="10px" fontSize="3xl">
-            <p>There is never a wrong time </p>
-            <p>to start something good !</p>
-          </Heading>
-          <Box paddingTop="10px" fontSize="xl">
-            <b>Talk to startup professional right away</b>
-          </Box>
-          <Box color="GrayText" paddingTop="10px">
-            <p>Advisory in choosing the right entity</p>
-            <p>End to end incorporation advisory</p>
-            <p>Post incorporation benifits</p>
-          </Box>
+        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
+          <Image
+            src={ThirdImg}
+            w="100%"
+            h="100%"
+            borderRadius="40px"
+            objectFit="cover"
+          />
         </Box>
-        <Box
-          width="80%"
-          height="400px"
-          borderRadius="40px"
-          bg="lightgray"
-        ></Box>
         <Box
           width="80%"
           display="flex"
@@ -690,7 +737,12 @@ function Home() {
         </Box>
       </Box>
       {/* footer-Desktop-view */}
+      <div
+       id="footer"
+      >
       <Footer />
+      </div>
+      
     </chakra.div>
   );
 }
