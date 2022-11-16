@@ -90,10 +90,11 @@ function Info() {
               <SimpleGrid columns={{ sm: 1, md: 1, lg: 2 }}>
                 <Flex
                   borderLeft="0.5px solid #e8e8e8"
-                  justifyContent="center"
+                  justifyContent="flex-start"
                   padding="20px"
                   flexDirection="column"
                   gap="20px"
+
                 >
                   <Box w="80%">
                     <Heading size="sm" fontWeight="semibold">
@@ -315,7 +316,7 @@ function Info() {
         </Flex>
         {/* Virtual Accounting */}
         <Flex mt="20px" w="60%" alignItems="flex-end" flexDirection="column">
-          <Heading fontSize={{ base: "xl", md: "5xl", lg: "7xl" }}>
+          <Heading fontSize={{ base: "xl", md: "5xl", lg: "5xl" }}>
             Virtual Accounting
           </Heading>
           <Box
@@ -332,7 +333,7 @@ function Info() {
         >
           <Flex
             w={{ base: "100%", md: "63%" }}
-            h={{ base: "40vh", md: "60vh" }}
+            h={{ base: "40vh", md: "40vh" }}
             alignItems="center"
             justifyContent={{ base: "center", md: "flex-end" }}
           >
@@ -353,14 +354,14 @@ function Info() {
           </Flex>
           <Flex
             w={{ base: "100%", md: "37%" }}
-            h={{ base: "20vh", md: "60vh" }}
+            h={{ base: "20vh", md: "40vh" }}
             // paddingLeft={{base:"0px",md:"20px",lg:"100px"}}
             alignItems={{ base: "center", md: "flex-end" }}
             justifyContent={{ base: "center" }}
           >
             <Heading
               w={{ base: "80%", md: "80%" }}
-              fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
+              fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             >
               <p>Accounting now</p>
               <p>Hassel free,</p>
@@ -373,7 +374,7 @@ function Info() {
             w="80%"
             padding={{ base: "0px", md: "40px", lg: "60px" }}
             textAlign="start"
-            fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
+            fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
           >
             How we do it!
           </Heading>
@@ -383,14 +384,14 @@ function Info() {
             w="80%"
             paddingLeft={{ base: "0px", md: "40px", lg: "60px" }}
             textAlign="start"
-            fontSize={{ base: "lg", md: "3xl", lg: "5xl" }}
+            fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
           >
             <p>
               Auditlens offers Virtual Accounting Services to manage your
               accounts payable, accounts receivable, projects, general ledger
               postings, bank reconciliations, preparation of financial
               statements, and MIS Reporting* for Small and Medium Enterprise
-              (SME) Sector. We are equipped with accounting software tto
+              (SME) Sector. We are equipped with accounting software to
               minimize the chances of miscalculations. Our ultimate goal is to
               be a value addition to your business for making you focus on your
               core business functions, let us provide the accounting, Tax
@@ -403,7 +404,7 @@ function Info() {
             w="80%"
             padding={{ base: "0px", md: "40px", lg: "60px" }}
             textAlign="start"
-            fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
+            fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             mt={{ base: "20px" }}
           >
             What we cover !
@@ -414,7 +415,7 @@ function Info() {
             w="80%"
             paddingLeft={{ base: "0px", md: "40px", lg: "60px" }}
             textAlign="start"
-            fontSize={{ base: "lg", md: "3xl", lg: "5xl" }}
+            fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
           >
             <UnorderedList>
               <ListItem>
@@ -437,7 +438,7 @@ function Info() {
 
         {/* start up advisory */}
         <Flex mt="20px" w="60%" alignItems="flex-end" flexDirection="column">
-          <Heading fontSize={{ base: "xl", md: "5xl", lg: "7xl" }}>
+          <Heading fontSize={{ base: "xl", md: "5xl", lg: " 5xl" }}>
             Startup Advisory
           </Heading>
           <Box
@@ -467,6 +468,7 @@ function Info() {
                 boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
                 cursor="pointer"
                 key={index}
+                position="relative"
               >
                 <Flex
                   alignItems="center"
@@ -477,6 +479,7 @@ function Info() {
                   borderBottom="0.5px solid #e8e8e8"
                   borderTopRadius="20px"
                   gap="5px"
+                  
                 >
                   <Icon
                     as={value.icon}
@@ -485,7 +488,7 @@ function Info() {
                     color={`${value.iconColor}`}
                   />
 
-                  <Heading fontSize="18px">{value.title}</Heading>
+                  <Heading fontSize="16px" textAlign="center">{value.title}</Heading>
                 </Flex>
                 <Flex
                   h="100px"
@@ -503,7 +506,7 @@ function Info() {
                       <Icon as={BiRupee} />
                       {value.priceInit}{" "}
                     </s>
-                    <Heading size="md">
+                    <Heading fontSize="18px">
                       <Icon as={BiRupee} />
                       {value.price}
                     </Heading>
@@ -523,7 +526,7 @@ function Info() {
                     {value.price}
                   </Heading>
                 </Flex>
-                <Flex flexDirection="column" padding="20px">
+                <Flex flexDirection="column" padding="10px">
                   <Heading size="sm" fontWeight="semibold">
                     Perks you get:
                   </Heading>
@@ -569,7 +572,10 @@ function Info() {
                     </Box>
                   </Flex>
                 </Flex>
-                <Flex w="100%" alignItems="center" justifyContent="center">
+                <Flex w="100%" alignItems="center" justifyContent="center"
+                position="absolute"
+                bottom="50px"
+                >
                   <Button
                     w="80%"
                     bg="#0E4E9B"
@@ -593,11 +599,11 @@ function Info() {
           id="2"
         >
           <Heading
-            fontSize={{ base: "xl", md: "5xl", lg: "7xl" }}
+            fontSize={{ base: "xl", md: "5xl", lg: " 5xl" }}
             mt={{ base: "10px", md: "20px", lg: "60px" }}
             id="3"
           >
-            Complience
+            compliance
           </Heading>
           <Box
             mt="20px"
@@ -613,7 +619,7 @@ function Info() {
         >
           <Flex
             w={{ base: "100%", md: "63%" }}
-            h={{ base: "40vh", md: "60vh" }}
+            h={{ base: "40vh", md: "40vh" }}
             alignItems="center"
             justifyContent={{ base: "center", md: "flex-end" }}
           >
@@ -634,14 +640,14 @@ function Info() {
           </Flex>
           <Flex
             w={{ base: "100%", md: "37%" }}
-            h={{ base: "20vh", md: "60vh" }}
+            h={{ base: "20vh", md: "40vh" }}
             // paddingLeft={{base:"0px",md:"20px",lg:"100px"}}
             alignItems={{ base: "center", md: "flex-end" }}
             justifyContent={{ base: "center" }}
           >
             <Heading
               w={{ base: "80%", md: "80%" }}
-              fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
+              fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             >
               <p>ITR</p>
               <p>Filing,</p>
@@ -654,7 +660,7 @@ function Info() {
             w="80%"
             padding={{ base: "0px", md: "40px", lg: "60px" }}
             textAlign="start"
-            fontSize={{ base: "xl", md: "3xl", lg: "6xl" }}
+            fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
           >
             Filing ITR now made easy
           </Heading>
@@ -664,7 +670,7 @@ function Info() {
             w="80%"
             paddingLeft={{ base: "0px", md: "40px", lg: "60px" }}
             textAlign="start"
-            fontSize={{ base: "lg", md: "3xl", lg: "5xl" }}
+            fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
           >
             <UnorderedList>
               <ListItem>
