@@ -270,7 +270,7 @@ function Home() {
                 color="whiteAlpha.900"
                 fontSize={{ base: "lg", md: "26px" }}
               >
-                Your virtual Accountant
+                Your Virtual Accountant
               </Heading>
               {styles.bx1List || isMobileView ? (
                 <UnorderedList
@@ -287,7 +287,7 @@ function Home() {
                 >
                   <ListItem padding="2px">Accouting on the go</ListItem>
                   <ListItem padding="2px">Global presence</ListItem>
-                  <ListItem padding="2px">Industry Speccific analysis</ListItem>
+                  <ListItem padding="2px">Industry Specific analysis</ListItem>
                   <ListItem padding="2px">Business Analytics</ListItem>
                   <ListItem padding="2px">Management Consulting</ListItem>
                 </UnorderedList>
@@ -647,9 +647,75 @@ function Home() {
         flexDirection="column"
         gap="20px"
       >
-        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
+         <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
           <Image
             src={firstImg}
+            w="100%"
+            h="100%"
+            borderRadius="40px"
+            objectFit="cover"
+          />
+        </Box>
+        <Box
+          width="80%"
+          display="flex"
+          justifyContent="flex-start"
+          flexDirection="column"
+        >
+          <Heading paddingTop="10px" fontSize="3xl">
+            <p>There is never a wrong time </p>
+            <p>to start something good !</p>
+          </Heading>
+          <Box paddingTop="10px" fontSize="xl">
+            <b>Talk to startup professional right away</b>
+          </Box>
+          <Box color="GrayText" paddingTop="10px">
+            <p>Advisory in choosing the right entity</p>
+            <p>End to end incorporation advisory</p>
+            <p>Post incorporation benifits</p>
+          </Box>
+        </Box>
+
+        
+        
+
+        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
+          <Image
+            src={secondImg}
+            w="100%"
+            h="100%"
+            borderRadius="40px"
+            objectFit="cover"
+          />
+        </Box>
+        <Box
+          width="80%"
+          display="flex"
+          justifyContent="flex-start"
+          flexDirection="column"
+        >
+          <Heading paddingTop="10px" fontSize="3xl">
+            <p>Relax we are here to </p>
+            <p>take care of your accounting</p>
+          </Heading>
+          <Box paddingTop="10px" fontSize="xl">
+            <b>India's only 100% virtual accounting firm !</b>
+          </Box>
+          <Box color="GrayText" paddingTop="10px">
+            <p>Advisory in choosing the right entity</p>
+            <p>End to end incorporation advisory</p>
+            <p>Post incorporation benifits</p>
+          </Box>
+        </Box>
+
+
+       
+
+       
+        
+        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
+          <Image
+            src={ThirdImg}
             w="100%"
             h="100%"
             borderRadius="40px"
@@ -679,62 +745,7 @@ function Home() {
             </p>
           </Box>
         </Box>
-        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
-          <Image
-            src={secondImg}
-            w="100%"
-            h="100%"
-            borderRadius="40px"
-            objectFit="cover"
-          />
-        </Box>
-        <Box
-          width="80%"
-          display="flex"
-          justifyContent="flex-start"
-          flexDirection="column"
-        >
-          <Heading paddingTop="10px" fontSize="3xl">
-            <p>There is never a wrong time </p>
-            <p>to start something good !</p>
-          </Heading>
-          <Box paddingTop="10px" fontSize="xl">
-            <b>Talk to startup professional right away</b>
-          </Box>
-          <Box color="GrayText" paddingTop="10px">
-            <p>Advisory in choosing the right entity</p>
-            <p>End to end incorporation advisory</p>
-            <p>Post incorporation benifits</p>
-          </Box>
-        </Box>
-        <Box width="80%" height="400px" borderRadius="40px" bg="lightgray">
-          <Image
-            src={ThirdImg}
-            w="100%"
-            h="100%"
-            borderRadius="40px"
-            objectFit="cover"
-          />
-        </Box>
-        <Box
-          width="80%"
-          display="flex"
-          justifyContent="flex-start"
-          flexDirection="column"
-        >
-          <Heading paddingTop="10px" fontSize="3xl">
-            <p>Relax we are here to </p>
-            <p>take care of your accounting</p>
-          </Heading>
-          <Box paddingTop="10px" fontSize="xl">
-            <b>India's only 100% virtual accounting firm !</b>
-          </Box>
-          <Box color="GrayText" paddingTop="10px">
-            <p>Advisory in choosing the right entity</p>
-            <p>End to end incorporation advisory</p>
-            <p>Post incorporation benifits</p>
-          </Box>
-        </Box>
+
       </Box>
       {/* footer-Desktop-view */}
       <div
