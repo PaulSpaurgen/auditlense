@@ -21,6 +21,7 @@ import {
   Image,
   UnorderedList,
   ListItem,
+  useToast,
 } from "@chakra-ui/react";
 import { BiRupee } from "react-icons/bi";
 import {
@@ -29,6 +30,7 @@ import {
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
 import { MdOutlineContactPage, MdEmail } from "react-icons/md";
+import axios from "axios";
 import logo from "../../Images/mainLogo.png";
 // MdOutlineContactPage RiCheckboxBlankCircleFill
 import startUpAdvisory from "../data";
@@ -40,22 +42,33 @@ function Info() {
   const [cardData, setCardData] = useState([]);
   const [flashCardsData, setFlashCardData] = useState([]);
   const [dataTodisp, setDataTodisp] = useState();
-  console.log(cardData.startUpAdvisory);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: 0,
+    email: "",
+    title: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState({
+    name: false,
+    phone: false,
+    email: false,
+  });
+  const toast = useToast();
   useEffect(() => {
-    console.log(startUpAdvisory.flashCards);
     setFlashCardData(startUpAdvisory.flashCards);
     setCardData(startUpAdvisory.startUpAdvisory);
   }, []);
 
   const HandleChange = (name) => {
-    console.log("name:", name);
-    console.log(flashCardsData);
     for (let i = 0; i < flashCardsData.length; i++) {
       if (flashCardsData[i].name === name) {
         console.log("dataToDisp:", flashCardsData[i]);
         setDataTodisp(flashCardsData[i]);
       }
     }
+    setFormData({ name: "", phone: "", email: "" });
+    setIsError({ name: false, phone: false, email: false });
     onOpen();
   };
   useEffect(() => {
@@ -67,7 +80,7 @@ function Info() {
     } else if (number === 2) {
       const element = document.getElementById("2");
       setTimeout(() => {
-        element.scrollIntoView({ behavior: "smooth", block: "end" });
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 1000);
     } else if (number === 3) {
       const element = document.getElementById("3");
@@ -75,7 +88,113 @@ function Info() {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 1500);
     }
-  });
+  }, []);
+  useEffect(() => {
+    if (formData.name) {
+      setIsError((prev) => ({
+        ...prev,
+        name: false,
+      }));
+    }
+    if (formData.phone) {
+      setIsError((prev) => ({
+        ...prev,
+        phone: false,
+      }));
+    }
+    if (formData.email) {
+      setIsError((prev) => ({
+        ...prev,
+        email: false,
+      }));
+    }
+  }, [formData.name, formData.email, formData.phone]);
+  const recordData = (title) => {
+    let check = false;
+    if (formData.name.length === 0) {
+      check = true;
+      setIsError((prev) => ({
+        ...prev,
+        name: true,
+      }));
+    }
+    if (formData.phone === 0 || formData.phone < 1000000000) {
+      check = true;
+      setIsError((prev) => ({
+        ...prev,
+        phone: true,
+      }));
+    }
+    if (formData.email.length === 0) {
+      check = true;
+      setIsError((prev) => ({
+        ...prev,
+        email: true,
+      }));
+    }
+    setFormData((prev) => ({
+      ...prev,
+      title: title,
+    }));
+    if (check) {
+      showTostError();
+    } else {
+      saveData();
+    }
+  };
+  const showTostError = () => {
+    toast({
+      title: "Error.",
+      description: "Please enter the form details accurately.",
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+    });
+  };
+  const saveData = async () => {
+    setIsLoading(true);
+    console.log("DataTosave:", formData);
+    let data = {
+      Name: formData.name,
+      Phone: formData.phone,
+      Email: formData.email,
+      Reason: "Start up advisory",
+    };
+    axios
+      .post(
+        "https://sheet.best/api/sheets/039677ea-486d-4278-b5a0-f3fe874331c5",
+        data
+      )
+      .then((response) => {
+        showSuccesToast();
+        console.log(response);
+        setIsLoading(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+        warningTost();
+        setIsLoading(false);
+      });
+  };
+  const warningTost = () => {
+    toast({
+      title: "Something went wrong!",
+      description:
+        "Please check your internet connection (or) try again later.",
+      status: "warning",
+      duration: 5000,
+      isClosable: true,
+    });
+  };
+  const showSuccesToast = () => {
+    toast({
+      title: "We recieved you're request",
+      description: "Our professional expert will contact you shortly.",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+  };
   return (
     <>
       <Modal isOpen={isOpen} size="3xl" onClose={onClose} isCentered>
@@ -94,7 +213,6 @@ function Info() {
                   padding="20px"
                   flexDirection="column"
                   gap="20px"
-
                 >
                   <Box w="80%">
                     <Heading size="sm" fontWeight="semibold">
@@ -105,28 +223,89 @@ function Info() {
                         pointerEvents="none"
                         children={<MdOutlineContactPage />}
                         color="blue.500"
+                        value={formData.name}
                       />
-                      <Input placeholder="Your Name" variant="filled" />
+                      <Input
+                        placeholder="Your Name"
+                        variant="filled"
+                        onChange={(e) => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            name: e.target.value,
+                          }));
+                        }}
+                        isError={isError.name}
+                      />
                     </InputGroup>
+                    {isError.name && (
+                      <Box fontSize="sm" color="red.500">
+                        <p>
+                          Please enter your <b>name!</b>
+                        </p>
+                      </Box>
+                    )}
                     <InputGroup margin="10px">
                       <InputLeftElement
                         pointerEvents="none"
                         children={<BsPhone />}
                         color="green.500"
                       />
-                      <Input placeholder="Phone Number" variant="filled" />
+                      <Input
+                        placeholder="Phone Number"
+                        variant="filled"
+                        type="number"
+                        value={formData.phone}
+                        onChange={(e) => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            phone: e.target.value,
+                          }));
+                        }}
+                        isError={isError.phone}
+                      />
                     </InputGroup>
+                    {isError.phone && (
+                      <Box fontSize="sm" color="red.500">
+                        <p>
+                          Please enter your <b>phone number accurately!</b>{" "}
+                        </p>
+                      </Box>
+                    )}
                     <InputGroup margin="10px">
                       <InputLeftElement
                         pointerEvents="none"
                         children={<MdEmail />}
                         color="orange.300"
                       />
-                      <Input placeholder="Your Email" variant="filled" />
+                      <Input
+                        placeholder="Your Email"
+                        variant="filled"
+                        value={formData.email}
+                        onChange={(e) => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            email: e.target.value,
+                          }));
+                        }}
+                        isError={isError.email}
+                      />
                     </InputGroup>
+                    {isError.email && (
+                      <Box fontSize="sm" color="red.500">
+                        <p>
+                          Please enter your <b>email!</b>
+                        </p>
+                      </Box>
+                    )}
 
                     <InputGroup margin="10px">
-                      <Button w="100%" bg="#0E4E9B" color="white">
+                      <Button
+                        w="100%"
+                        bg="#0E4E9B"
+                        color="white"
+                        onClick={() => recordData(dataTodisp?.title)}
+                        isLoading={isLoading}
+                      >
                         Talk To Advisor
                       </Button>
                     </InputGroup>
@@ -364,7 +543,7 @@ function Info() {
               fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
             >
               <p>Accounting now</p>
-              <p>Hassel free,</p>
+              <p>Hassel-free,</p>
               <p>with Audit Lens</p>
             </Heading>
           </Flex>
@@ -390,12 +569,12 @@ function Info() {
               Auditlens offers Virtual Accounting Services to manage your
               accounts payable, accounts receivable, projects, general ledger
               postings, bank reconciliations, preparation of financial
-              statements, and MIS Reporting* for Small and Medium Enterprise
-              (SME) Sector. We are equipped with accounting software to
-              minimize the chances of miscalculations. Our ultimate goal is to
-              be a value addition to your business for making you focus on your
-              core business functions, let us provide the accounting, Tax
-              compliance services.
+              statements, and MIS Reporting* for the Small and Medium Enterprise
+              (SME) Sector. We are equipped with accounting software to minimise
+              the chances of miscalculations. Our ultimate goal is to be a
+              valuable addition to your business for making you focus on your
+              core business functions, let us provide accounting, Tax compliance
+              services.
             </p>
           </Box>
         </Flex>
@@ -420,7 +599,7 @@ function Info() {
             <UnorderedList>
               <ListItem>
                 Bookkeeping for your Business like capturing the invoices both
-                Sales, Purchase side and the voucher entries.
+                the Sales, Purchase sides and voucher entries.
               </ListItem>
               <ListItem>Periodic GST Filing, if applicable.</ListItem>
               <ListItem>
@@ -437,7 +616,13 @@ function Info() {
         </Flex>
 
         {/* start up advisory */}
-        <Flex mt="20px" w="60%" alignItems="flex-end" flexDirection="column">
+        <Flex
+          mt="20px"
+          w="60%"
+          alignItems="flex-end"
+          flexDirection="column"
+          id="2"
+        >
           <Heading fontSize={{ base: "xl", md: "5xl", lg: " 5xl" }}>
             Startup Advisory
           </Heading>
@@ -479,7 +664,6 @@ function Info() {
                   borderBottom="0.5px solid #e8e8e8"
                   borderTopRadius="20px"
                   gap="5px"
-                  
                 >
                   <Icon
                     as={value.icon}
@@ -488,7 +672,9 @@ function Info() {
                     color={`${value.iconColor}`}
                   />
 
-                  <Heading fontSize="16px" textAlign="center">{value.title}</Heading>
+                  <Heading fontSize="16px" textAlign="center">
+                    {value.title}
+                  </Heading>
                 </Flex>
                 <Flex
                   h="100px"
@@ -572,9 +758,12 @@ function Info() {
                     </Box>
                   </Flex>
                 </Flex>
-                <Flex w="100%" alignItems="center" justifyContent="center"
-                position="absolute"
-                bottom="50px"
+                <Flex
+                  w="100%"
+                  alignItems="center"
+                  justifyContent="center"
+                  position="absolute"
+                  bottom="50px"
                 >
                   <Button
                     w="80%"
@@ -591,19 +780,13 @@ function Info() {
             ))}
           </SimpleGrid>
         </Flex>
-        <Flex
-          mt="20px"
-          w="60%"
-          alignItems="flex-end"
-          flexDirection="column"
-          id="2"
-        >
+        <Flex mt="20px" w="60%" alignItems="flex-end" flexDirection="column">
           <Heading
             fontSize={{ base: "xl", md: "5xl", lg: " 5xl" }}
             mt={{ base: "10px", md: "20px", lg: "60px" }}
             id="3"
           >
-            compliance
+            Compliance
           </Heading>
           <Box
             mt="20px"
@@ -662,7 +845,7 @@ function Info() {
             textAlign="start"
             fontSize={{ base: "xl", md: "3xl", lg: "4xl" }}
           >
-            Filing ITR now made easy
+            Filing ITR is now made easy
           </Heading>
         </Flex>
         <Flex w="100%" justifyContent="center">

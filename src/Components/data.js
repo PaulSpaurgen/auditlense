@@ -87,7 +87,7 @@ startUpAdvisory = [
     name: "UR",
     descreption: (
       <p>
-        Get your Certificate<b> in </b>2hrs
+        Get your Certificate<b> in 2hrs </b>
       </p>
     ),
     icon: RiFundsBoxFill,
@@ -466,5 +466,5 @@ flashCards = [
     ],
   },
 ];
-let exportingData = { startUpAdvisory, flashCards }
-export default exportingData ;
+let exportingData = { startUpAdvisory, flashCards };
+export default exportingData;
